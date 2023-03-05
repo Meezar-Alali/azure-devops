@@ -2,9 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+
 jobs:
   build:
     # thet type of runner
@@ -12,5 +10,21 @@ jobs:
     # steps represent sequence task
     steps:
     - uses: actions/checkout@v2
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.11
+    - name: install depedencies
+      run: |
+       make install
+    - name: Lint with pylint
+      run: |
+        make lint
+    - name: Test with python
+      run: |
+        make test
+    
+    
+    
     - name: Run make command
       run: make hello
