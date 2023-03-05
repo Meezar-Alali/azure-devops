@@ -13,7 +13,7 @@ pool:
 
 
     # steps represent sequence task
-    steps:
+  steps:
     - uses: actions/checkout@v2
     - name: Run make command
       run: make hello
